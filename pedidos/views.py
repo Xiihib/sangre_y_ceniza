@@ -1,13 +1,10 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import transaction
 from .models import Carrito, ItemCarrito, Orden, ItemOrden
 from productos.models import Producto
-
+import random, string
 
 @login_required
 def ver_carrito(request):
@@ -87,4 +84,29 @@ def confirmar_compra(request):
         items.delete()
 
     messages.success(request, f'¡Compra confirmada! Orden #{orden.id}')
-    return redirect('pedidos:ver_carrito')
+    return redirect('pedidos:detalle_orden', orden_id=orden.id) 
+
+
+@login_required
+def detalle_orden(request, orden_id):
+    orden = get_object_or_404(Orden, id=orden_id, usuario=request.user)
+    return render(request, 'pedidos/orden_detalle.html', {'orden': orden})
+
+
+@login_required
+def pagar_orden(request, orden_id):
+    orden = get_object_or_404(Orden, id=orden_id, usuario=request.user)
+
+    if orden.estado != 'pendiente':
+        messages.warning(request, 'Esta orden ya fue procesada')
+        return redirect('pedidos:detalle_orden', orden_id=orden.id)
+
+    if request.method == 'POST':
+        codigo = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        orden.estado = 'pagada'
+        orden.codigo_pago = codigo
+        orden.save()
+        messages.success(request, f'Pago aprobado. Código de transacción: {codigo}')
+        return redirect('pedidos:detalle_orden', orden_id=orden.id)
+
+    return render(request, 'pedidos/pagar.html', {'orden': orden})

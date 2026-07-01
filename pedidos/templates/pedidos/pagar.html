@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Pagar Orden - Sangre y Ceniza{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Confirmar Pago</h1>
+
+    <div class="alert alert-info">
+        Vas a pagar la Orden #{{ orden.id }} por un total de <strong>${{ orden.total }}</strong>.
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Número de tarjeta (simulado)</label>
+            <input type="text" class="form-control" placeholder="4242 4242 4242 4242" disabled>
+        </div>
+        <button type="submit" class="btn btn-success btn-lg">
+            <i class="bi bi-lock-fill me-1"></i>Confirmar Pago
+        </button>
+        <a href="{% url 'pedidos:detalle_orden' orden.id %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

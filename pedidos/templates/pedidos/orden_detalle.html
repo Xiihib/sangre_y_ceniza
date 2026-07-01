@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Orden #{{ orden.id }} - Sangre y Ceniza{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Orden #{{ orden.id }}</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <table class="table">
+        <tr>
+            <th>Fecha</th>
+            <td>{{ orden.fecha }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>
+                {% if orden.estado == 'pagada' %}
+                    <span class="badge bg-success">Pagada</span>
+                {% elif orden.estado == 'pendiente' %}
+                    <span class="badge bg-warning text-dark">Pendiente de Pago</span>
+                {% else %}
+                    <span class="badge bg-secondary">{{ orden.get_estado_display }}</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td>${{ orden.total }}</td>
+        </tr>
+        {% if orden.codigo_pago %}
+        <tr>
+            <th>Código de transacción</th>
+            <td><code>{{ orden.codigo_pago }}</code></td>
+        </tr>
+        {% endif %}
+    </table>
+
+    <h4>Productos</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in orden.items.all %}
+            <tr>
+                <td>{{ item.nombre_producto }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>${{ item.precio_unitario }}</td>
+                <td>${{ item.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if orden.estado == 'pendiente' %}
+        <a href="{% url 'pedidos:pagar_orden' orden.id %}" class="btn btn-success btn-lg">
+            <i class="bi bi-credit-card me-1"></i>Pagar Ahora
+        </a>
+    {% endif %}
+
+    <a href="{% url 'productos:listar' %}" class="btn btn-secondary">Volver al Catálogo</a>
+</div>
+{% endblock %}
