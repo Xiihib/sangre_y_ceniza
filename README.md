@@ -1,6 +1,14 @@
-# Sangre y Ceniza 
+# Sangre y Ceniza
 
-E-commerce de réplicas vikingas, sajonas y normandas de grado museo, desarrollado con Django como proyecto final del Bootcamp Python2026.
+E-commerce de réplicas vikingas, sajonas y normandas de grado museo, 
+
+## Objetivo del proyecto
+
+Desarrollar una aplicación e-commerce funcional el cual integra autenticación con roles, gestión de catálogo mediante el ORM, y un flujo completo de compra (carrito → confirmación → orden), aplicando buenas prácticas de estructura, persistencia de datos y validaciones,desarrollado con Django como proyecto final del Bootcamp Python2026.
+
+## Autor
+
+Nahib
 
 ##  Repositorio
 
