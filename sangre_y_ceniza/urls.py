@@ -26,7 +26,3 @@ urlpatterns = [
     path('pedidos/', include('pedidos.urls')),
 ]
 
-
-## una vez finalizado el proyecto y puesto en un servidor. eliminar este comando
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
