@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Producto - Sangre y Ceniza{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Eliminar Producto</h1>
+
+    <div class="alert alert-danger">
+        ¿Estás seguro que deseas eliminar el producto <strong>{{ producto.nombre }}</strong>? Esta acción no se puede deshacer.
+    </div>
+
+    {% if producto.imagen %}
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" width="200" class="mb-3">
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+        <a href="{% url 'productos:listar' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

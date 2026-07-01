@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block meta_description %}Catálogo completo de réplicas vikingas, sajonas y normandas de grado museo{% endblock %}
+
+{% block title %}Productos - Sangre y Ceniza{% endblock %}
+
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Productos</h1>
+        <a href="{% url 'productos:crear' %}" class="btn btn-primary">
+            <i class="bi bi-plus-circle me-1"></i>Agregar Producto
+        </a>
+    </div>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for p in producto %}
+        <div class="col">
+            <div class="card h-100">
+                {% if p.imagen %}
+                <img src="{{ p.imagen.url }}" class="card-img-top" alt="{{ p.nombre }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.nombre }}</h5>
+                    <p class="card-text text-muted">{{ p.categoria }}</p>
+                    <p class="card-text">{{ p.descripcion|truncatewords:15 }}</p>
+                    <p class="card-text"><strong>${{ p.precio }}</strong></p>
+                    <p class="card-text">Stock: {{ p.stock }}</p>
+                </div>
+                <div class="card-footer d-flex gap-2">
+                    <a href="{% url 'productos:detalle' p.id %}" class="btn btn-sm btn-info w-100">
+                        <i class="bi bi-eye me-1"></i>Detalles del Producto
+                    </a>
+                    {% if user.is_staff %}
+                    <a href="{% url 'productos:editar' p.id %}" class="btn btn-sm btn-warning">
+                        <i class="bi bi-pencil me-1"></i>Editar
+                    </a>
+                    <a href="{% url 'productos:eliminar' p.id %}" class="btn btn-sm btn-danger">
+                        <i class="bi bi-trash me-1"></i>Eliminar
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">No hay productos registrados aún.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
