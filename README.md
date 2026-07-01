@@ -1,14 +1,15 @@
 # Sangre y Ceniza
 
-E-commerce de réplicas vikingas, sajonas y normandas de grado museo, 
+Sangre y Ceniza es una aplicación web tipo e-commerce inspirada en la estética y el legado de las culturas vikinga, sajona y normanda. La plataforma simula una tienda especializada en réplicas de grado museo — armas, armaduras y accesorios medievales — pensada como vitrina para coleccionistas y entusiastas de la historia antigua.
+
+## Autor
+
+Nahib Mubaharak Aliaga
+
 
 ## Objetivo del proyecto
 
 Desarrollar una aplicación e-commerce funcional el cual integra autenticación con roles, gestión de catálogo mediante el ORM, y un flujo completo de compra (carrito → confirmación → orden), aplicando buenas prácticas de estructura, persistencia de datos y validaciones,desarrollado con Django como proyecto final del Bootcamp Python2026.
-
-## Autor
-
-Nahib
 
 ##  Repositorio
 
@@ -21,35 +22,38 @@ Leer requirements.txt
 ##  Instalación
 
 ### Descargar el repositorio
-bash
+```bash
 git clone https://github.com/Xiihib/sangre_y_ceniza.git
 cd sangre_y_ceniza
+```
 
 
 
 
 ### Crear y activar un entorno virtual:
-bash
+```bash
 python -m venv venv
 source venv/scripts/activate
+```
 
 ### Instalar las dependencias:
-bash
+```bash
 pip install -r requirements.txt
-
+```
 
 ### Implementar las migraciones:
-bash
+```bash
 python manage.py migrate
-
+```
 ### Correr el servidor:
-bash
+```bash
 python manage.py runserver
-
+```
 
 ### Abrir el navegador:
+```
 http://127.0.0.1:8000/
-
+```
 ## Rutas principales
 
 | Ruta                          | Descripción                     | Acceso      |
@@ -65,6 +69,8 @@ http://127.0.0.1:8000/
 | `/usuarios/logout/`           | Cerrar sesión                   | Autenticado |
 | `/pedidos/carrito/`           | Ver carrito                     | Cliente     |
 | `/pedidos/carrito/confirmar/` | Confirmar compra                | Cliente     |
+| `/pedidos/orden/<id>/`        | Detalle de orden                | Cliente     |
+| `/pedidos/orden/<id>/pagar/`  | Pagar orden (simulado)          | Cliente     |
 | `/admin/`                     | Panel de administración Django  | Admin       |
 
 ##  Credenciales de prueba
@@ -76,3 +82,15 @@ Administrador
 Cliente
 - Usuario: `usuario`
 - Contraseña: `usuario`
+
+## Funcionalidades
+
+- Autenticación con roles (admin / cliente) usando `is_staff`
+- CRUD completo de productos (solo admin)
+- Catálogo de productos persistido en base de datos (ORM de Django)
+- Carrito de compras: agregar, quitar, actualizar cantidades, subtotales y total
+- Confirmación de compra: genera una orden asociada al usuario autenticado
+- Simulación de pago: genera un código de transacción y actualiza el estado de la orden a "Pagada"
+- Validaciones en formularios (campos requeridos, precio > 0, stock > 0)
+- Mensajes claros de éxito/error en toda la aplicación
+
