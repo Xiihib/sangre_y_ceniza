@@ -12,9 +12,12 @@ Leer requirements.txt
 
 ##  Instalación
 
-### Descargar el repositorio:
-git https://github.com/Xiihib/sangre_y_ceniza.git
+### Descargar el repositorio
+bash
+git clone https://github.com/Xiihib/sangre_y_ceniza.git
 cd sangre_y_ceniza
+
+
 
 
 ### Crear y activar un entorno virtual:
@@ -39,21 +42,22 @@ python manage.py runserver
 ### Abrir el navegador:
 http://127.0.0.1:8000/
 
-##  Rutas principales
+## Rutas principales
 
-| Ruta                          | Descripción                     | Acceso |
-| `/`                           | Página de inicio (La Gran Sala) | Público |
-| `/productos/`                 | Catálogo de productos           | Público |
-| `/productos/<id>/`            | Detalle de producto             | Público |
-| `/productos/crear/`           | Crear producto                  | Admin |
-| `/productos/<id>/editar/`     | Editar producto                 | Admin |
-| `/productos/<id>/eliminar/`   | Eliminar producto               | Admin |
-| `/usuarios/login/`            | Iniciar sesión                  | Público |
-| `/usuarios/registro/`         | Crear cuenta                    | Público |
+| Ruta                          | Descripción                     | Acceso      |
+|-------------------------------|----------------------------------|-------------|
+| `/`                           | Página de inicio (La Gran Sala) | Público     |
+| `/productos/`                 | Catálogo de productos           | Público     |
+| `/productos/<id>/`            | Detalle de producto             | Público     |
+| `/productos/crear/`           | Crear producto                  | Admin       |
+| `/productos/<id>/editar/`     | Editar producto                 | Admin       |
+| `/productos/<id>/eliminar/`   | Eliminar producto                | Admin       |
+| `/usuarios/login/`            | Iniciar sesión                  | Público     |
+| `/usuarios/registro/`         | Crear cuenta                    | Público     |
 | `/usuarios/logout/`           | Cerrar sesión                   | Autenticado |
-| `/pedidos/carrito/`           | Ver carrito                     | Cliente |
-| `/pedidos/carrito/confirmar/` | Confirmar compra                | Cliente |
-| `/admin/`                     | Panel de administración Django  | Admin |
+| `/pedidos/carrito/`           | Ver carrito                     | Cliente     |
+| `/pedidos/carrito/confirmar/` | Confirmar compra                | Cliente     |
+| `/admin/`                     | Panel de administración Django  | Admin       |
 
 ##  Credenciales de prueba
 
