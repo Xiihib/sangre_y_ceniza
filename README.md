@@ -15,6 +15,44 @@ Desarrollar una aplicación e-commerce funcional el cual integra autenticación 
 
 https://github.com/Xiihib/sangre_y_ceniza.git
 
+
+## Arquitectura del proyecto
+
+El proyecto sigue el patrón **MTV (Model-Template-View)** de Django, organizado en apps independientes por funcionalidad:
+
+sangre_y_ceniza/
+├── productos/              # Catálogo: categorías, productos, CRUD (admin)
+│   ├── models.py           # Categoria, Producto
+│   ├── views.py            # index, listar, crear, editar, eliminar, detalle
+│   ├── urls.py
+│   └── templates/productos/
+├── usuarios/                # Autenticación: login, logout, registro
+│   ├── views.py
+│   ├── urls.py
+│   └── templates/usuarios/
+├── pedidos/                 # Carrito y órdenes
+│   ├── models.py            # Carrito, ItemCarrito, Orden, ItemOrden
+│   ├── views.py             # carrito, agregar, actualizar, eliminar, confirmar, pagar
+│   ├── urls.py
+│   └── templates/pedidos/
+├── sangre_y_ceniza/          # Configuración del proyecto
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── templates/                # Plantillas compartidas
+│   ├── base.html
+│   └── includes/
+│       ├── navbar.html
+│       └── footer.html
+├── static/                   # CSS, JS e imágenes propias del proyecto
+│   ├── css/
+│   ├── js/
+│   └── img/
+├── media/                    # Imágenes subidas por el administrador (no versionado)
+├── requirements.txt
+└── manage.py
+
+
 ## 🚀 Tecnologías
 
 - Python 3.14
@@ -33,8 +71,6 @@ Leer requirements.txt
 git clone https://github.com/Xiihib/sangre_y_ceniza.git
 cd sangre_y_ceniza
 ```
-
-
 
 ### Crear y activar un entorno virtual:
 ```bash
