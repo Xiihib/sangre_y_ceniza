@@ -15,6 +15,14 @@ Desarrollar una aplicación e-commerce funcional el cual integra autenticación 
 
 https://github.com/Xiihib/sangre_y_ceniza.git
 
+## 🚀 Tecnologías
+
+- Python 3.14
+- Django 6.0
+- SQLite
+- Bootstrap 5
+
+
 ## Requisitos 
 
 Leer requirements.txt
@@ -26,7 +34,6 @@ Leer requirements.txt
 git clone https://github.com/Xiihib/sangre_y_ceniza.git
 cd sangre_y_ceniza
 ```
-
 
 
 
