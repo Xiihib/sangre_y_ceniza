@@ -1,6 +1,6 @@
 # Sangre y Ceniza
 
-Sangre y Ceniza es una aplicación web tipo e-commerce inspirada en la estética y el legado de las culturas vikinga, sajona y normanda. La plataforma simula una tienda especializada en réplicas de grado museo — armas, armaduras y accesorios medievales — pensada como vitrina para coleccionistas y entusiastas de la historia antigua.
+Sangre y Ceniza es una aplicación web tipo e-commerce inspirada en la estética y el legado de las culturas vikinga, sajona y normanda. La plataforma simula una tienda especializada en réplicas de grado museo — armas, armaduras y accesorios medievales — pensada para coleccionistas y entusiastas de la historia antigua.
 
 ## Autor
 
@@ -21,7 +21,6 @@ https://github.com/Xiihib/sangre_y_ceniza.git
 - Django 6.0
 - SQLite
 - Bootstrap 5
-
 
 ## Requisitos 
 
