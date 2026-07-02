@@ -20,6 +20,7 @@ https://github.com/Xiihib/sangre_y_ceniza.git
 
 El proyecto sigue el patrón **MTV (Model-Template-View)** de Django, organizado en apps independientes por funcionalidad:
 
+```
 sangre_y_ceniza/
 ├── productos/              # Catálogo: categorías, productos, CRUD (admin)
 │   ├── models.py           # Categoria, Producto
@@ -51,6 +52,15 @@ sangre_y_ceniza/
 ├── media/                    # Imágenes subidas por el administrador (no versionado)
 ├── requirements.txt
 └── manage.py
+```
+
+Cada app tiene una responsabilidad clara y autocontenida:
+
+- **`productos`** — gestión del catálogo (modelos, vistas CRUD y templates), de acceso público para consulta y restringido a administradores para creación/edición/eliminación.
+- **`usuarios`** — autenticación de clientes y administradores, apoyada en el modelo `User` nativo de Django y el campo `is_staff` para diferenciar roles.
+- **`pedidos`** — lógica de carrito de compras y órdenes, incluyendo la simulación de pago.
+
+Los templates y archivos estáticos compartidos (como el layout base, navbar y footer) viven fuera de las apps, en `templates/` y `static/` a nivel de proyecto, ya que son utilizados por todas ellas.
 
 
 ## 🚀 Tecnologías
