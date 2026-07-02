@@ -47,8 +47,7 @@ sangre_y_ceniza/
 │       └── footer.html
 ├── static/                   # CSS, JS e imágenes propias del proyecto
 │   ├── css/
-│   ├── js/
-│   └── img/
+│   └── js/
 ├── media/                    # Imágenes subidas por el administrador (no versionado)
 ├── requirements.txt
 └── manage.py
